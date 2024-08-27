@@ -16,6 +16,6 @@ public class Browserstack {
                 .log().status()
                 .log().body()
                 .statusCode(200)
-                .extract().path("automate_session.video_url");
+                .extract().path("automation_session.video_url");
     }
 }
