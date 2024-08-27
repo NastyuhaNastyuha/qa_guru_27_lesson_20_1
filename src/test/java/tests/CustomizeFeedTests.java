@@ -4,9 +4,11 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static io.appium.java_client.AppiumBy.className;
 import static io.appium.java_client.AppiumBy.id;
 
@@ -20,7 +22,7 @@ public class CustomizeFeedTests extends TestBase {
         $(id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
 
         $(id("org.wikipedia.alpha:id/view_list_card_header_menu")).click();
-        $(id("org.wikipedia.alpha:id/content")).find(byText("Customize the feed")).click();
+        $$(id("org.wikipedia.alpha:id/content")).findBy(text("Customize the feed")).click();
         $(id("org.wikipedia.alpha:id/content_types_recycler"))
                 .find(byText("Featured article")).parent().parent()
                 .$(id("org.wikipedia.alpha:id/feed_content_type_checkbox")).click();

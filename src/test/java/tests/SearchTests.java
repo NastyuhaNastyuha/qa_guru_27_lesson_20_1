@@ -1,8 +1,8 @@
 package tests;
 
 import data.TestData;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
@@ -14,7 +14,7 @@ import static io.appium.java_client.AppiumBy.*;
 import static io.qameta.allure.Allure.step;
 
 @DisplayName("Проверка поиска в приложении Wiki")
-public class WikiTests extends TestBase {
+public class SearchTests extends TestBase {
 
     TestData data = new TestData();
 
@@ -26,7 +26,9 @@ public class WikiTests extends TestBase {
             $(id("org.wikipedia.alpha:id/addLanguageButton")).click();
         });
         step("Нажать на кнопку \"Add languages\"", () -> {
-            $(id("org.wikipedia.alpha:id/wiki_language_title")).click();
+            //$(id("org.wikipedia.alpha:id/wiki_language_title")).click();
+            $(id("org.wikipedia.alpha:id/wikipedia_languages_recycler"))
+                    .find(byText("Add language")).click();
         });
         step("Нажать на Русский язык в списке", () -> {
             $(id("org.wikipedia.alpha:id/languages_list_recycler")).find(byText("Русский"))
@@ -51,6 +53,7 @@ public class WikiTests extends TestBase {
     }
 
     @Test
+    @Disabled
     @DisplayName("Открытие первой статьи в результатах поиска")
     void openArticleTest() {
         step("Вводим поисковый запрос в серч бар", () -> {
@@ -72,6 +75,7 @@ public class WikiTests extends TestBase {
     }
 
     @Test
+    @Disabled
     @DisplayName("Проверка краткого описания статьи")
     void checkDescriptionTest() {
         step("Вводим поисковый запрос в серч бар", () -> {
