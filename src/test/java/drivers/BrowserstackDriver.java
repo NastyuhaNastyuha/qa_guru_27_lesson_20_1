@@ -2,53 +2,43 @@ package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
 import config.BrowserstackConfig;
-import config.BrowserstackDriverConfig;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.options.UiAutomator2Options;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 import javax.annotation.Nonnull;
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 
 public class BrowserstackDriver implements WebDriverProvider {
 
-    static BrowserstackConfig config  = ConfigFactory.create(BrowserstackConfig.class, System.getProperties());
-    static BrowserstackDriverConfig mobileConfig  = ConfigFactory
-            .create(BrowserstackDriverConfig.class, System.getProperties());
+
+//    private static final BrowserStackAuthConfig authConfig = ConfigFactory.create(BrowserStackAuthConfig.class,
+//            System.getProperties());
+    private static final BrowserstackConfig config = ConfigFactory.create(BrowserstackConfig.class);
+
 
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
-        MutableCapabilities caps = new MutableCapabilities();
+        UiAutomator2Options options = new UiAutomator2Options();
+        options.setAutomationName(config.automationName())
+                .setPlatformName(config.platformName())
+                .setPlatformVersion(config.browserstackPlatform())
+                .setDeviceName(config.browserstackDevice())
+                .setFullReset(config.appFullReset())
+                .setApp(config.browserstackApp())
+                .setLanguage(config.appLanguage())
+                .setLocale(config.appLocale());
 
-        // Set your access credentials
-        caps.setCapability("browserstack.user", config.getUser());
-        caps.setCapability("browserstack.key", config.getKey());
-
-        // Set URL of the application under test
-        caps.setCapability("app", mobileConfig.getApp());
-
-        // Specify device and os_version for testing
-        caps.setCapability("device", mobileConfig.getDevice());
-        caps.setCapability("os_version", mobileConfig.getOsVersion());
-
-        // Set other BrowserStack capabilities
-        caps.setCapability("project", "First Java Project");
-        caps.setCapability("build", "browserstack-build-1");
-        caps.setCapability("name", "first_test");
-
-
-        // Initialise the remote Webdriver using BrowserStack remote URL
-        // and desired capabilities defined above
         try {
-            return new RemoteWebDriver(
-                    new URL(config.getBrowserstackUrl()), caps);
-        } catch (MalformedURLException e) {
+            return new AndroidDriver(new URI("https://" + config.getUser() + ":" + config.getKey()
+                    + "@" + config.browserstackUrl()).toURL(), options);
+        } catch (MalformedURLException | URISyntaxException e) {
             throw new RuntimeException(e);
         }
     }
