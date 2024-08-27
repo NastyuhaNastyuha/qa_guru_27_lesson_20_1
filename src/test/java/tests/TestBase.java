@@ -18,11 +18,11 @@ import static com.codeborne.selenide.Selenide.open;
 public class TestBase {
     @BeforeAll
     static void beforeAll() {
-//        Configuration.browser = BrowserstackDriver.class.getName();
-//        Configuration.browserSize = null;
-//        Configuration.timeout = 10000;
-        LocalMobileDriverReader localMobileDriverReader = new LocalMobileDriverReader();
-        localMobileDriverReader.setLocalMobileDriverConfig();
+        Configuration.browser = BrowserstackDriver.class.getName();
+        Configuration.browserSize = null;
+        Configuration.timeout = 10000;
+//        LocalMobileDriverReader localMobileDriverReader = new LocalMobileDriverReader();
+//        localMobileDriverReader.setLocalMobileDriverConfig();
     }
 
     @BeforeEach
