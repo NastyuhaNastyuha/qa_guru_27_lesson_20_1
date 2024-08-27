@@ -21,8 +21,10 @@ public class CustomizeFeedTests extends TestBase {
         //пропустить онбординг
         $(id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
 
-        $(id("org.wikipedia.alpha:id/view_list_card_header_menu")).click();
-        $$(id("org.wikipedia.alpha:id/content")).findBy(text("Customize the feed")).click();
+//        $(id("org.wikipedia.alpha:id/view_list_card_header_menu")).click();
+//        $$(id("org.wikipedia.alpha:id/content")).findBy(text("Customize the feed")).click();
+
+        $(id("org.wikipedia.alpha:id/view_announcement_action_positive")).click();
         $(id("org.wikipedia.alpha:id/content_types_recycler"))
                 .find(byText("Featured article")).parent().parent()
                 .$(id("org.wikipedia.alpha:id/feed_content_type_checkbox")).click();

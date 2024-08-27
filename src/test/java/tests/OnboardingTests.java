@@ -4,8 +4,10 @@ import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static io.appium.java_client.AppiumBy.className;
 import static io.appium.java_client.AppiumBy.id;
 import static io.qameta.allure.Allure.step;
@@ -21,8 +23,9 @@ public class OnboardingTests extends TestBase {
         });
         step("Нажать на кнопку \"Add languages\"", () -> {
             //$(id("org.wikipedia.alpha:id/wiki_language_title")).click();
-            $(id("org.wikipedia.alpha:id/wikipedia_languages_recycler"))
-                    .find(byText("Add language")).click();
+//            $(id("org.wikipedia.alpha:id/wikipedia_languages_recycler"))
+//                    .find(byText("Add language")).click();
+            $$(id("org.wikipedia.alpha:id/wiki_language_title")).findBy(text("Add language")).click();
         });
         step("Нажать на Русский язык в списке", () -> {
            $(id("org.wikipedia.alpha:id/languages_list_recycler")).find(byText("Русский"))
@@ -32,7 +35,7 @@ public class OnboardingTests extends TestBase {
             $(className("android.widget.ImageButton")).click();
         });
         step("Проверить, что выбранный язык добавлен в список", () -> {
-            $(id("org.wikipedia.alpha:id/languagesList")).shouldHave(Condition.text("Русский"));
+            $(id("org.wikipedia.alpha:id/languagesList")).shouldHave(text("Русский"));
         });
     }
 
