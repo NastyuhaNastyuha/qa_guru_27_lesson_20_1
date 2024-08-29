@@ -31,8 +31,10 @@ public class SearchTests extends TestBase {
                     .find(byText("Add language")).click();
         });
         step("Нажать на Русский язык в списке", () -> {
-            $(id("org.wikipedia.alpha:id/languages_list_recycler")).find(byText("Русский"))
-                    .click();
+//            $(id("org.wikipedia.alpha:id/languages_list_recycler")).find(byText("Русский"))
+//                    .click();
+            $$(id("org.wikipedia.alpha:id/localized_language_name"))
+                    .findBy(text("Русский")).click();
         });
         step("Нажать на кнопку назад", () -> {
             $(className("android.widget.ImageButton")).click();
