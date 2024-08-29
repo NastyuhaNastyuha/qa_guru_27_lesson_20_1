@@ -37,7 +37,9 @@ public class OnboardingTests extends TestBase {
             $(className("android.widget.ImageButton")).click();
         });
         step("Проверить, что выбранный язык добавлен в список", () -> {
-            $(id("org.wikipedia.alpha:id/languagesList")).shouldHave(text("Русский"));
+//            $(id("org.wikipedia.alpha:id/languagesList")).shouldHave(text("Русский"));
+            $(id("org.wikipedia.alpha:id/languageListContainer")).shouldHave(text("Русский"));
+
         });
     }
 

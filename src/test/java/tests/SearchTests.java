@@ -46,8 +46,11 @@ public class SearchTests extends TestBase {
 
         step("Вводим поисковый запрос в серч бар", () -> {
             $(id("org.wikipedia.alpha:id/search_container")).click();
-            $(id("org.wikipedia.alpha:id/horizontal_scroll_languages"))
+//            $(id("org.wikipedia.alpha:id/horizontal_scroll_languages"))
+//                    .find(byText("RUSSIAN")).click();
+            $(id("org.wikipedia.alpha:id/search_language_scroll_view_container"))
                     .find(byText("RUSSIAN")).click();
+
             $(id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Достоевский");
             //$(id("org.wikipedia.alpha:id/search_src_text")).sendKeys(data.searchTerm);
         });
