@@ -1,7 +1,8 @@
 package data;
 
+import static data.Languages.RU;
+
 public class TestData {
-    public String searchTerm = "Appium";
-    public String errorMessage = "An error occur";
-    public String description = "Automation for Apps";
+    public String searchTerm = "Достоевский";
+    public Languages language = RU;
 }
