@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -37,12 +38,20 @@ public class OnboardingTests extends TestBase {
             $(className("android.widget.ImageButton")).click();
         });
         step("Проверить, что выбранный язык добавлен в список", () -> {
-//            $(id("org.wikipedia.alpha:id/languagesList")).shouldHave(text("Русский"));
-//            $(id("org.wikipedia.alpha:id/languageListContainer")).shouldHave(text("Русский"));
             $$(id("org.wikipedia.alpha:id/option_label"))
                     .get(1).shouldHave(text("Русский"));
-
         });
+
+        //пропустить онбординг
+        $(id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
+        step("Проверить, что выбранный язык добавлен в настройках", () -> {
+            $(id("org.wikipedia.alpha:id/nav_tab_more")).click();
+            $(id("org.wikipedia.alpha:id/main_drawer_settings_container")).click();
+            $$(id("android:id/title")).findBy(text("Wikipedia languages")).click();
+            $$(id("org.wikipedia.alpha:id/langCodeText")).findBy(text("RU"))
+                    .should(exist);
+        });
+
     }
 
     @Test
