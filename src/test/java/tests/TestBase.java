@@ -49,10 +49,10 @@ public class TestBase {
     @AfterEach
     void addAttachments() {
         Attach.pageSource();
-        closeWebDriver();
         if ((deviceHost == null) || deviceHost.equals("browserstack")) {
             String sessionId = Selenide.sessionId().toString();
             Attach.addVideo(sessionId);
         }
+        closeWebDriver();
     }
 }
