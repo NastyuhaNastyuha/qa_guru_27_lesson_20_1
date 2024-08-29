@@ -14,32 +14,22 @@ import java.net.URL;
 
 public class BrowserstackDriver implements WebDriverProvider {
 
-    static BrowserstackConfig config  = ConfigFactory.create(BrowserstackConfig.class, System.getProperties());
+    static BrowserstackConfig config = ConfigFactory.create(BrowserstackConfig.class, System.getProperties());
 
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
         MutableCapabilities caps = new MutableCapabilities();
 
-        // Set your access credentials
         caps.setCapability("browserstack.user", config.getUser());
         caps.setCapability("browserstack.key", config.getKey());
-
-        // Set URL of the application under test
         caps.setCapability("app", config.getApp());
-
-        // Specify device and os_version for testing
         caps.setCapability("device", config.getDevice());
         caps.setCapability("platform.version", config.getOsVersion());
+        caps.setCapability("project", config.getProject());
+        caps.setCapability("build", config.getBuild());
+        caps.setCapability("name", config.getName());
 
-        // Set other BrowserStack capabilities
-        caps.setCapability("project", "First Java Project");
-        caps.setCapability("build", "browserstack-build-1");
-        caps.setCapability("name", "first_test");
-
-
-        // Initialise the remote Webdriver using BrowserStack remote URL
-        // and desired capabilities defined above
         try {
             return new RemoteWebDriver(
                     new URL(config.getBrowserstackUrl()), caps);

@@ -13,7 +13,6 @@ import org.junit.jupiter.api.BeforeEach;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
-import static io.restassured.RestAssured.sessionId;
 
 public class TestBase {
 
@@ -33,11 +32,8 @@ public class TestBase {
                 break;
         }
 
-//        Configuration.browser = BrowserstackDriver.class.getName();
         Configuration.browserSize = null;
         Configuration.timeout = 10000;
-//        LocalMobileDriverReader localMobileDriverReader = new LocalMobileDriverReader();
-//        localMobileDriverReader.setLocalMobileDriverConfig();
     }
 
     @BeforeEach
