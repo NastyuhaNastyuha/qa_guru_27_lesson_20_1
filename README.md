@@ -11,7 +11,7 @@
 - [Интеграция с Allure TestOps](#testops)
 - [Интеграция с Jira](#jira)
 - [Уведомления в Telegram](#telegram)
-- [Видео с примером запуска тестов в Selenoid](#video)
+- [Видео с примером запуска тестов в Browserstack](#video)
 
 
 <a id="tools"></a>
@@ -129,7 +129,7 @@ gradle clean test -DdeviceHost=local
 
 <a id="video"></a>
 
-## Видео с примером запуска тестов в Selenoid
+## Видео с примером запуска тестов в Browserstack
 В Allure отчёте к каждому тесту прикладываются скриншот с последнего шага, и видео прохождения теста. Примеры таких видео:
 
 <p align="center">
