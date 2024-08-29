@@ -133,5 +133,5 @@ gradle clean test -DdeviceHost=local
 В Allure отчёте к каждому тесту прикладываются скриншот с последнего шага, и видео прохождения теста. Примеры таких видео:
 
 <p align="center">
-<img src="images/screenshots/video.gif " width="1000">
+<img src="images/screenshots/video.gif " width="350">
 </p>
