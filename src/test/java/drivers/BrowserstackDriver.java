@@ -11,12 +11,14 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import javax.annotation.Nonnull;
 import java.net.MalformedURLException;
+
 import java.net.URL;
 
 public class BrowserstackDriver implements WebDriverProvider {
 
     static BrowserstackConfig config  = ConfigFactory.create(BrowserstackConfig.class, System.getProperties());
     static BrowserstackDriverConfig mobileConfig  = ConfigFactory.create(BrowserstackDriverConfig.class, System.getProperties());
+
 
     @Nonnull
     @Override
@@ -40,13 +42,16 @@ public class BrowserstackDriver implements WebDriverProvider {
         caps.setCapability("name", "first_test");
 
 
+
         // Initialise the remote Webdriver using BrowserStack remote URL
         // and desired capabilities defined above
         try {
             return new RemoteWebDriver(
                     new URL(config.getBrowserstackUrl()), caps);
         } catch (MalformedURLException e) {
+
             throw new RuntimeException(e);
         }
+
     }
 }
