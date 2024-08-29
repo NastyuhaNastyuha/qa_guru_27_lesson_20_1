@@ -1,5 +1,5 @@
 # Проект по автоматизации тестирования мобильного приложения [Wikipedia](https://www.wikipedia.org/)
-<p align="center"><a href="https://www.wikipedia.org/"><img src="images/icons/wikipedia.png" align="center" width="360" height="360"  alt="Файл:wikipedia.png"/></a></p>
+<p align="center"><a href="https://www.wikipedia.org/"><img src="images/icons/wikipedia.jpg" align="center" alt="Файл:wikipedia.png"/></a></p>
 
 ## Содержание:
 
