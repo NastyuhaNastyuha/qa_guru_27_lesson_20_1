@@ -38,7 +38,9 @@ public class OnboardingTests extends TestBase {
         });
         step("Проверить, что выбранный язык добавлен в список", () -> {
 //            $(id("org.wikipedia.alpha:id/languagesList")).shouldHave(text("Русский"));
-            $(id("org.wikipedia.alpha:id/languageListContainer")).shouldHave(text("Русский"));
+//            $(id("org.wikipedia.alpha:id/languageListContainer")).shouldHave(text("Русский"));
+            $$(id("org.wikipedia.alpha:id/option_label"))
+                    .get(1).shouldHave(text("Русский"));
 
         });
     }
