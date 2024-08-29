@@ -27,8 +27,10 @@ public class SearchTests extends TestBase {
         });
         step("Нажать на кнопку \"Add languages\"", () -> {
             //$(id("org.wikipedia.alpha:id/wiki_language_title")).click();
-            $(id("org.wikipedia.alpha:id/wikipedia_languages_recycler"))
-                    .find(byText("Add language")).click();
+//            $(id("org.wikipedia.alpha:id/wikipedia_languages_recycler"))
+//                    .find(byText("Add language")).click();
+            $$(id("org.wikipedia.alpha:id/wiki_language_title"))
+                    .findBy(text("Add language")).click();
         });
         step("Нажать на Русский язык в списке", () -> {
 //            $(id("org.wikipedia.alpha:id/languages_list_recycler")).find(byText("Русский"))

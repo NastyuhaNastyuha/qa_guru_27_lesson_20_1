@@ -28,8 +28,10 @@ public class OnboardingTests extends TestBase {
             $$(id("org.wikipedia.alpha:id/wiki_language_title")).findBy(text("Add language")).click();
         });
         step("Нажать на Русский язык в списке", () -> {
-           $(id("org.wikipedia.alpha:id/languages_list_recycler")).find(byText("Русский"))
-                   .click();
+//           $(id("org.wikipedia.alpha:id/languages_list_recycler")).find(byText("Русский"))
+//                   .click();
+            $$(id("org.wikipedia.alpha:id/localized_language_name"))
+                    .findBy(text("Русский")).click();
         });
         step("Нажать на кнопку назад", () -> {
             $(className("android.widget.ImageButton")).click();
