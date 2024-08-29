@@ -22,4 +22,13 @@ public interface BrowserstackConfig extends Config {
 
     @Key("name")
     String getName();
+
+    @Key("device")
+    String getDevice();
+
+    @Key("os_version")
+    String getOsVersion();
+
+    @Key("app")
+    String getApp();
 }

@@ -39,9 +39,9 @@ public class SearchTests extends TestBase {
         step("Нажать на кнопку назад", () -> {
             $(className("android.widget.ImageButton")).click();
         });
-
-        $(id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
-
+        step("Пропустить онбординг", () -> {
+            $(id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
+        });
         step("Ввести поисковый запрос в строку поиска", () -> {
             $(id("org.wikipedia.alpha:id/search_container")).click();
             $$(id("org.wikipedia.alpha:id/langCodeText"))

@@ -2,7 +2,6 @@ package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
 import config.BrowserstackConfig;
-import config.BrowserstackDriverConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.MutableCapabilities;
@@ -16,7 +15,7 @@ import java.net.URL;
 public class BrowserstackDriver implements WebDriverProvider {
 
     static BrowserstackConfig config  = ConfigFactory.create(BrowserstackConfig.class, System.getProperties());
-    static BrowserstackDriverConfig mobileConfig  = ConfigFactory.create(BrowserstackDriverConfig.class, System.getProperties());
+    //static BrowserstackDriverConfig mobileConfig  = ConfigFactory.create(BrowserstackDriverConfig.class, System.getProperties());
 
     @Nonnull
     @Override
@@ -28,11 +27,11 @@ public class BrowserstackDriver implements WebDriverProvider {
         caps.setCapability("browserstack.key", config.getKey());
 
         // Set URL of the application under test
-        caps.setCapability("app", mobileConfig.getApp());
+        caps.setCapability("app", config.getApp());
 
         // Specify device and os_version for testing
-        caps.setCapability("device", mobileConfig.getDevice());
-        caps.setCapability("platform.version", mobileConfig.getOsVersion());
+        caps.setCapability("device", config.getDevice());
+        caps.setCapability("platform.version", config.getOsVersion());
 
         // Set other BrowserStack capabilities
         caps.setCapability("project", "First Java Project");
