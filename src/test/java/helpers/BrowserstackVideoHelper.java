@@ -2,7 +2,7 @@ package helpers;
 
 import static io.restassured.RestAssured.given;
 
-public class Browserstack {
+public class BrowserstackVideoHelper {
     public static String videoUrl(String sessionId) {
 
         String url = String.format("https://api.browserstack.com/app-automate/sessions/%s.json", sessionId);
