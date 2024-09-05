@@ -1,8 +1,8 @@
 package data;
 
-import static data.Languages.RU;
+import static data.Language.RU;
 
 public class TestData {
     public String searchTerm = "Достоевский";
-    public Languages language = RU;
+    public Language language = RU;
 }

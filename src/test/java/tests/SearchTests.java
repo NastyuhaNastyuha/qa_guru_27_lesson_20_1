@@ -1,15 +1,13 @@
 package tests;
 
+import data.Language;
 import data.TestData;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import screens.*;
-
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
-import static io.appium.java_client.AppiumBy.*;
 import static io.qameta.allure.Allure.step;
 
 @Epic("Поиск")
@@ -23,46 +21,33 @@ public class SearchTests extends TestBase {
     ExploreScreen exploreScreen = new ExploreScreen();
     ArticlesScreen articlesScreen = new ArticlesScreen();
 
+
     @Owner("rybinaa")
     @Severity(SeverityLevel.BLOCKER)
-    @Test
-    @DisplayName("Успешный поиск по поисковому запросу")
-    void successfulSearchTest() {
-        TestData testData = new TestData();
-
+//    @Test
+    @DisplayName("Успешный поиск по поисковому запросу на выбранном языке")
+    @CsvFileSource(resources = "/testData/searchTermByLanguage.csv")
+    @ParameterizedTest(name = "Успешный поиск по поисковому запросу на выбранном языке {0}")
+    void successfulSearchTestByChosenLanguage(Language language, String searchTerm) {
         step("Нажать на кнопку \"Add or edit languages\" на экране онбординга", () -> {
-//            $(id("org.wikipedia.alpha:id/addLanguageButton")).click();
             firstOnboardingScreen.clickAddLanguageButton();
         });
         step("Нажать на кнопку \"Add languages\"", () -> {
-//            $$(id("org.wikipedia.alpha:id/wiki_language_title"))
-//                    .findBy(text("Add language")).click();
             wikipediaLanguagesScreen.clickAddLanguageButton();
         });
-        step("Нажать на " + testData.language.getName() + " язык в списке", () -> {
-//            $$(id("org.wikipedia.alpha:id/localized_language_name"))
-//                    .findBy(text(testData.language.getName())).click();
-            addALanguageScreen.selectALanguage(testData.language.getName());
+        step("Нажать на " + language.getName() + " язык в списке", () -> {
+            addALanguageScreen.selectALanguage(language.getName());
         });
         step("Нажать на кнопку назад", () -> {
-//            $(className("android.widget.ImageButton")).click();
             wikipediaLanguagesScreen.clickBackButton();
         });
         step("Пропустить онбординг", () -> {
-//            $(id("org.wikipedia.alpha:id/fragment_onboarding_skip_button")).click();
             firstOnboardingScreen.clickSkipButton();
         });
         step("Ввести поисковый запрос в строку поиска", () -> {
-//            $(id("org.wikipedia.alpha:id/search_container")).click();
-//            $$(id("org.wikipedia.alpha:id/langCodeText"))
-//                    .findBy(text(testData.language.getCode())).click();
-//            $(id("org.wikipedia.alpha:id/search_src_text"))
-//                    .sendKeys(testData.searchTerm);
-            exploreScreen.findArticlesInSearchWithChosenLanguage(testData.language.getCode(), testData.searchTerm);
+            exploreScreen.findArticlesInSearchWithChosenLanguage(language.getCode(), searchTerm);
         });
         step("Проверить, что найден хотя бы один результат", () ->
-//                $$(id("org.wikipedia.alpha:id/page_list_item_title"))
-//                        .shouldHave(sizeGreaterThan(0))
                 articlesScreen.checkArticlesListIsNotEmpty());
     }
 }
