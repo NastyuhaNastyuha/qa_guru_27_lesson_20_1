@@ -7,6 +7,7 @@ import screens.CustomizeTheFeedScreen;
 import screens.ExploreScreen;
 import screens.FirstOnboardingScreen;
 import screens.components.CustomizeFeedBanner;
+
 import static io.qameta.allure.Allure.step;
 
 @Epic("Кастомизация новостной ленты")

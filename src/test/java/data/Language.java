@@ -4,7 +4,8 @@ import lombok.Getter;
 
 @Getter
 public enum Language {
-    RU("Русский", "RU");
+    RU("Русский", "RU"),
+    DE("Deutsch", "DE");
     private final String name;
     private final String code;
 

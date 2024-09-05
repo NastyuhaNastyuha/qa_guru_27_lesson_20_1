@@ -1,8 +1,6 @@
 package screens;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
@@ -27,7 +25,7 @@ public class ExploreScreen {
         featuredArticleCard.shouldNotBe(visible);
     }
 
-    public void findArticlesInSearchWithChosenLanguage (String languageCode, String searchTerm) {
+    public void findArticlesInSearchWithChosenLanguage(String languageCode, String searchTerm) {
         searchButton.click();
         languageCodes.findBy(text(languageCode)).click();
         searchInput.sendKeys(searchTerm);

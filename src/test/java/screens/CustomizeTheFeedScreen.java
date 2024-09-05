@@ -8,7 +8,7 @@ import static io.appium.java_client.AppiumBy.*;
 public class CustomizeTheFeedScreen {
     private final SelenideElement featuredArticleToggle =
             $(accessibilityId("Featured article, Daily featured article on Wikipedia"))
-            .$(id("org.wikipedia.alpha:id/feed_content_type_checkbox"));
+                    .$(id("org.wikipedia.alpha:id/feed_content_type_checkbox"));
     private final SelenideElement backButton = $(className("android.widget.ImageButton"));
 
     public void setFeaturedArticleToggle() {

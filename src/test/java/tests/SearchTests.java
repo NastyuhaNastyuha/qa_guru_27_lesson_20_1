@@ -1,13 +1,12 @@
 package tests;
 
 import data.Language;
-import data.TestData;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import screens.*;
+
 import static io.qameta.allure.Allure.step;
 
 @Epic("Поиск")
@@ -24,7 +23,6 @@ public class SearchTests extends TestBase {
 
     @Owner("rybinaa")
     @Severity(SeverityLevel.BLOCKER)
-//    @Test
     @DisplayName("Успешный поиск по поисковому запросу на выбранном языке")
     @CsvFileSource(resources = "/testData/searchTermByLanguage.csv")
     @ParameterizedTest(name = "Успешный поиск по поисковому запросу на выбранном языке {0}")
@@ -47,7 +45,6 @@ public class SearchTests extends TestBase {
         step("Ввести поисковый запрос в строку поиска", () -> {
             exploreScreen.findArticlesInSearchWithChosenLanguage(language.getCode(), searchTerm);
         });
-        step("Проверить, что найден хотя бы один результат", () ->
-                articlesScreen.checkArticlesListIsNotEmpty());
+        step("Проверить, что найден хотя бы один результат", () -> articlesScreen.checkArticlesListIsNotEmpty());
     }
 }

@@ -25,7 +25,6 @@ public class WikipediaLanguagesScreen {
     }
 
     public void checkLanguageInList(String languageCode) {
-        languagesList.findBy(text(languageCode))
-                .should(exist);
+        languagesList.findBy(text(languageCode)).should(exist);
     }
 }

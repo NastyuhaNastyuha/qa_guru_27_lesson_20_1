@@ -1,7 +1,6 @@
 package tests;
 
 import data.Language;
-import data.TestData;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,6 +9,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import screens.*;
 import screens.components.MoreOptionsMenu;
 import screens.components.NavigationTab;
+
 import static io.qameta.allure.Allure.step;
 
 @Epic("Онбординг")

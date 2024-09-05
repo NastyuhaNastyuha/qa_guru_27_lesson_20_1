@@ -20,10 +20,8 @@ import java.net.URL;
 import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
 
 public class LocalMobileDriver implements WebDriverProvider {
-    static final LocalMobileDriverConfig localMobileDriverConfig = ConfigFactory.create(
-            LocalMobileDriverConfig.class,
-            System.getProperties()
-    );
+    static final LocalMobileDriverConfig localMobileDriverConfig = ConfigFactory
+            .create(LocalMobileDriverConfig.class, System.getProperties());
 
     public static URL getAppiumServerUrl() {
         try {
@@ -42,20 +40,14 @@ public class LocalMobileDriver implements WebDriverProvider {
     public AndroidDriver getEmulatedDriver() {
         UiAutomator2Options options = new UiAutomator2Options();
 
-        options.setAutomationName(localMobileDriverConfig.automationName())
-                .setPlatformName(localMobileDriverConfig.platformName())
-                .setDeviceName(localMobileDriverConfig.deviceName())
-                .setApp(getAppPath())
-                .setAppPackage(localMobileDriverConfig.appWaitPackage())
-                .setAppActivity(localMobileDriverConfig.appWaitActivity());
+        options.setAutomationName(localMobileDriverConfig.automationName()).setPlatformName(localMobileDriverConfig.platformName()).setDeviceName(localMobileDriverConfig.deviceName()).setApp(getAppPath()).setAppPackage(localMobileDriverConfig.appWaitPackage()).setAppActivity(localMobileDriverConfig.appWaitActivity());
 
         return new AndroidDriver(getAppiumServerUrl(), options);
     }
 
     private String getAppPath() {
         String appVersion = localMobileDriverConfig.app();
-        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia" +
-                "/releases/download/latest/" + appVersion;
+        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia" + "/releases/download/latest/" + appVersion;
         String appPath = "src/test/resources/apps/" + appVersion;
 
         File app = new File(appPath);

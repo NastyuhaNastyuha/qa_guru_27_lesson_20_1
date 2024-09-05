@@ -33,8 +33,7 @@ public class BrowserstackDriver implements WebDriverProvider {
         caps.setCapability("name", browserstackConfig.getName());
 
         try {
-            return new RemoteWebDriver(
-                    new URL(browserstackConfig.getBrowserstackUrl()), caps);
+            return new RemoteWebDriver(new URL(browserstackConfig.getBrowserstackUrl()), caps);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
