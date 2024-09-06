@@ -3,12 +3,13 @@ package data;
 import lombok.Getter;
 
 @Getter
-public enum Languages {
-    RU("Русский", "RU");
+public enum Language {
+    RU("Русский", "RU"),
+    DE("Deutsch", "DE");
     private final String name;
     private final String code;
 
-    Languages(String name, String code) {
+    Language(String name, String code) {
         this.name = name;
         this.code = code;
     }

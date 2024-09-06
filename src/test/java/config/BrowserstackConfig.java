@@ -5,11 +5,6 @@ import org.aeonbits.owner.Config;
 @Config.LoadPolicy(Config.LoadType.FIRST)
 @Config.Sources("classpath:browserstack.properties")
 public interface BrowserstackConfig extends Config {
-    @Key("browserstack.user")
-    String getUser();
-
-    @Key("browserstack.key")
-    String getKey();
 
     @Key("browserstack.url")
     @DefaultValue("https://hub.browserstack.com/wd/hub")
